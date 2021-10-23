@@ -16,6 +16,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
   final screens = [
     HomeScreenCustomer(),
     ListItScreen(),
+    ProfileScreen(),
   ];
   @override
   Widget build(BuildContext context) => Scaffold(
@@ -44,10 +45,10 @@ class _BottomNavBarState extends State<BottomNavBar> {
               //   icon: Icon(Icons.message),
               //   label: "Trò truyện",
               // ),
-              // BottomNavigationBarItem(
-              //   icon: Icon(Icons.person),
-              //   label: "Hồ Sơ",
-              // ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.person),
+                label: "Hồ Sơ",
+              ),
             ],
           ),
         ),
