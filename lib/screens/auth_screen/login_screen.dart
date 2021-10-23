@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:it_support/firebase_database/database.dart';
 import 'package:it_support/screens/bottom_nav_bar_screen.dart';
-import 'package:it_support/screens/auth_screen/forgot_password_screen.dart';
 
 class LoginScreen extends StatelessWidget {
   final TextEditingController emailTextEditingController =
@@ -29,15 +28,13 @@ class LoginScreen extends StatelessWidget {
                 child: Container(
                     width: 380,
                     height: 300,
-                    // padding: EdgeInsets.all(15),
-                    // decoration: BoxDecoration(
-                    //     shape: BoxShape.circle, color: Colors.blue),
-                    child: Image.asset('assets/images/logo.jpg')),
+                    child: Image.asset('assets/images/logo.jpg')
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.fromLTRB(0, 0, 0, 40),
                 child: Text(
-                  "Xin Chào,\nMừng bạn trở lại !",
+                  "IT SUPPORT ADMIN",
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       color: Colors.black,
@@ -50,7 +47,7 @@ class LoginScreen extends StatelessWidget {
                   controller: emailTextEditingController,
                   style: TextStyle(fontSize: 18, color: Colors.black),
                   decoration: InputDecoration(
-                      labelText: "TÊN ĐĂNG NHẬP",
+                      labelText: "EMAIL",
                       labelStyle:
                           TextStyle(color: Color(0xff888888), fontSize: 15)),
                 ),
@@ -70,13 +67,6 @@ class LoginScreen extends StatelessWidget {
                               color: Color(0xff888888), fontSize: 15)),
                     ),
                   ),
-                  Text(
-                    "HIỆN",
-                    style: TextStyle(
-                        color: Colors.blue,
-                        fontSize: 13,
-                        fontWeight: FontWeight.bold),
-                  )
                 ],
               ),
               Padding(
@@ -105,38 +95,6 @@ class LoginScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              Container(
-                height: 130,
-                width: double.infinity,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    // InkWell(
-                    //   child: Text(
-                    //     "NGƯỜI DÙNG MỚI ?",
-                    //     style:
-                    //         TextStyle(fontSize: 15, color: Color(0xff888888)),
-                    //   ),
-                    //   onTap: () {
-                    //     Navigator.push(context,
-                    //         MaterialPageRoute(builder: backtoRegister));
-                    //   },
-                    // ),
-                    InkWell(
-                      child: Text(
-                        "QUÊN MẬT KHẨU",
-                        style: TextStyle(fontSize: 15, color: Colors.blue),
-                      ),
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: backtoForgotPasswordScreen));
-                      },
-                    )
-                  ],
-                ),
-              ),
             ],
           ),
         ),
@@ -158,7 +116,7 @@ class LoginScreen extends StatelessWidget {
         .user;
 
     if (firebaseUser != null) {
-      itspRef.child(firebaseUser.uid).once().then((DataSnapshot snap) {
+      adminRef.child(firebaseUser.uid).once().then((DataSnapshot snap) {
         if (snap.value != null) {
           displayToastMessage("Đăng nhập thành công", context);
           Navigator.push(context,
@@ -176,9 +134,5 @@ class LoginScreen extends StatelessWidget {
 
   displayToastMessage(String message, BuildContext context) {
     Fluttertoast.showToast(msg: message);
-  }
-
-  Widget backtoForgotPasswordScreen(BuildContext context) {
-    return ForgotPasswordScreen();
   }
 }

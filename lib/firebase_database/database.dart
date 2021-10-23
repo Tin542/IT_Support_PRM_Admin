@@ -1,6 +1,9 @@
 
 import 'package:firebase_database/firebase_database.dart';
 
+//admin account
+DatabaseReference adminRef = FirebaseDatabase.instance.reference().child("adminaccount");
+
 //Users
 DatabaseReference usersRef = FirebaseDatabase.instance.reference().child("users");
 
