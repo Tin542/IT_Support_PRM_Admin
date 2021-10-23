@@ -17,10 +17,15 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-
-  displayToastMessage(String message, BuildContext context){
-    Fluttertoast.showToast(msg:message);
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getProfileuser();
   }
+  final User? user = FirebaseAuth.instance.currentUser;
+  String displayEmail = '';
+  String displayName = '';
+
 
   Widget textfield({@required hintText, @required icon, onTap}) {
     return Material(
@@ -79,7 +84,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         ),
                       ),
                       Text(
-                        "Nguyen Van A",
+                        displayName,
                         style: TextStyle(
                           fontSize: 22,
                           fontWeight: FontWeight.bold,
@@ -87,22 +92,22 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                     ],
                   ),
-                  Padding(
-                    padding: EdgeInsets.only(top: 120, left: 160),
-                    child: CircleAvatar(
-                      backgroundColor: Colors.black54,
-                      child: IconButton(
-                        icon: Icon(Icons.camera_alt_outlined,
-                            color: Colors.white, size: 25),
-                        onPressed: () {},
-                      ),
-                    ),
-                  ),
+                  // Padding(
+                  //   padding: EdgeInsets.only(top: 120, left: 160),
+                  //   child: CircleAvatar(
+                  //     backgroundColor: Colors.black54,
+                  //     child: IconButton(
+                  //       icon: Icon(Icons.camera_alt_outlined,
+                  //           color: Colors.white, size: 25),
+                  //       onPressed: () {},
+                  //     ),
+                  //   ),
+                  // ),
                 ],
               ),
-              SizedBox(
-                height: 22,
-              ),
+              // SizedBox(
+              //   height: 22,
+              // ),
               Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
@@ -135,72 +140,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   color: kWhiteColor,
                                 ),
                               ),
-                              SizedBox(
-                                width: 68,
-                              ),
-                              RawMaterialButton(
-                                onPressed: () => {
-                                  Get.to(() => EditProfile(),
-                                      transition:
-                                      Transition.rightToLeftWithFade,
-                                      duration: Duration(milliseconds: 600))
-                                },
-                                child: Padding(
-                                  padding: const EdgeInsets.fromLTRB(100, 0, 0, 0),
-                                  child: Icon(
-                                    Icons.edit,
-                                    color: kWhiteColor,
-                                  ),
-                                ),
-                              ),
                             ],
                           ),
                         ),
                         textfield(
-                          hintText: 'user@gmail.com',
+                          hintText: displayEmail,
                           icon: Icons.email_outlined,
-                        ),
-                        textfield(
-                          hintText: '10/07/2000',
-                          icon: Icons.date_range,
-                        ),
-                        textfield(
-                          hintText: '+84 123456789',
-                          icon: Icons.phone,
-                        ),
-                        Container(
-                          height: 50,
-                          decoration: BoxDecoration(
-                            color: kBlueColor,
-                            //Colors.grey.shade300,
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding:
-                                const EdgeInsets.fromLTRB(20, 0, 20, 0),
-                                child: Icon(Icons.contact_support, color: kWhiteColor,),
-                              ),
-                              Text(
-                                "Giới tính",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 22,
-                                  color: kWhiteColor,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        textfield(
-                          hintText: 'Lịch sử',
-                          icon: Icons.history,
-                        ),
-                        textfield(
-                          hintText: 'Hỗ trợ',
-                          icon: Icons.contact_support_outlined,
                         ),
                         textfield(
                           hintText: 'Đăng Xuất',
@@ -221,5 +166,22 @@ class _ProfileScreenState extends State<ProfileScreen> {
         ),
       ),
     );
+  }
+
+  void getProfileuser() {
+    adminRef.child(user!.uid).onValue.listen((event) {
+      final data = new Map<String, dynamic>.from(event.snapshot.value);
+      final email = data['email'] as String;
+      final name = data['name'] as String;
+      setState(() {
+        displayEmail = '$email';
+        displayName = '$name';
+        print(displayEmail);
+        print(displayName);
+      });
+    });
+  }
+  displayToastMessage(String message, BuildContext context){
+    Fluttertoast.showToast(msg:message);
   }
 }
