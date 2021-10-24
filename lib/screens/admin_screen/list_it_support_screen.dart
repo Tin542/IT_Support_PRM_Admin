@@ -4,6 +4,8 @@ import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'edit_screen.dart';
+
 class ListITPage extends StatefulWidget {
   ListITPage({Key? key}) : super(key: key);
 
@@ -103,7 +105,7 @@ class _ListITPageState extends State<ListITPage> {
                     fontWeight: FontWeight.w600),
               ),
               SizedBox(
-                width: 15,
+                width: 30,
               ),
               Icon(
                 Icons.person,
@@ -120,6 +122,24 @@ class _ListITPageState extends State<ListITPage> {
                     color: Theme.of(context).accentColor,
                     fontWeight: FontWeight.w600),
               ),
+              SizedBox(
+                width: 30,
+              ),
+              Icon(
+                Icons.date_range,
+                color: Theme.of(context).accentColor,
+                size: 20,
+              ),
+              SizedBox(
+                width: 6,
+              ),
+              Text(
+                contact['dob'],
+                style: TextStyle(
+                    fontSize: 16,
+                    color: Theme.of(context).accentColor,
+                    fontWeight: FontWeight.w600),
+              ),
             ],
           ),
           SizedBox(
@@ -127,6 +147,28 @@ class _ListITPageState extends State<ListITPage> {
           ),
           Row(
             children: [
+              GestureDetector(
+                onTap: () {
+                  // _showDeleteDialog(contact: contact);
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (_) => Edit(
+                                contactKey: contact['key'],
+                              )));
+                },
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.edit,
+                      color: Colors.green,
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                width: 20,
+              ),
               GestureDetector(
                 onTap: () {
                   _showDeleteDialog(contact: contact);
