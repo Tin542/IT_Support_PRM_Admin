@@ -24,16 +24,6 @@ class _HomeScreenCustomerState extends State<HomeScreenCustomer> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text('List Custormer'),
-              // ElevatedButton(
-              //   onPressed: () => {
-              //     Navigator.push(
-              //       context,
-              //       MaterialPageRoute(builder: (context) => AddStudentPage()),
-              //     )
-              //   },
-              //   child: Text('Add', style: TextStyle(fontSize: 20.0)),
-              //   style: ElevatedButton.styleFrom(primary: Colors.deepPurple),
-              // )
             ],
           ),
         ),
