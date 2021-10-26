@@ -1,12 +1,9 @@
-import 'dart:async';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:it_support/firebase_database/database.dart';
-// import 'package:it_support/models/user_model.dart';
+import 'package:it_support/screens/admin_screen/edit_Custormer_info_screen.dart';
 
 class ListCustomerPage extends StatefulWidget {
   ListCustomerPage({Key? key}) : super(key: key);
@@ -16,9 +13,13 @@ class ListCustomerPage extends StatefulWidget {
 }
 
 class _ListCustomerPageState extends State<ListCustomerPage> {
+  deleteUser(id) {
+    print("User Deleted $id");
+  }
+
   late Query _ref;
-  // final DatabaseReference reference =
-  //     FirebaseDatabase.instance.reference().child('users');
+  DatabaseReference reference =
+      FirebaseDatabase.instance.reference().child('users');
 
   @override
   void initState() {
@@ -32,7 +33,9 @@ class _ListCustomerPageState extends State<ListCustomerPage> {
 
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   late final users = FirebaseDatabase.instance.reference();
+  late DatabaseReference databaseReference;
 
+  @override
   Widget _buildContactItem({Map? contact}) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 10),
@@ -101,10 +104,10 @@ class _ListCustomerPageState extends State<ListCustomerPage> {
                     fontWeight: FontWeight.w600),
               ),
               SizedBox(
-                width: 15,
+                width: 30,
               ),
               Icon(
-                Icons.transgender,
+                Icons.person,
                 color: Theme.of(context).accentColor,
                 size: 20,
               ),
@@ -118,6 +121,24 @@ class _ListCustomerPageState extends State<ListCustomerPage> {
                     color: Theme.of(context).accentColor,
                     fontWeight: FontWeight.w600),
               ),
+              SizedBox(
+                width: 30,
+              ),
+              Icon(
+                Icons.date_range,
+                color: Theme.of(context).accentColor,
+                size: 20,
+              ),
+              SizedBox(
+                width: 6,
+              ),
+              Text(
+                contact['dob'],
+                style: TextStyle(
+                    fontSize: 16,
+                    color: Theme.of(context).accentColor,
+                    fontWeight: FontWeight.w600),
+              ),
             ],
           ),
           SizedBox(
@@ -125,6 +146,28 @@ class _ListCustomerPageState extends State<ListCustomerPage> {
           ),
           Row(
             children: [
+              GestureDetector(
+                onTap: () {
+                  // _showDeleteDialog(contact: contact);
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (_) => Edit2(
+                                contactKey: contact['key'],
+                              )));
+                },
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.edit,
+                      color: Colors.green,
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                width: 20,
+              ),
               GestureDetector(
                 onTap: () {
                   _showDeleteDialog(contact: contact);
@@ -145,7 +188,7 @@ class _ListCustomerPageState extends State<ListCustomerPage> {
     );
   }
 
-  _showDeleteDialog({Map? contact}) {
+  void _showDeleteDialog({Map? contact}) {
     showDialog(
         context: context,
         builder: (context) {
@@ -155,7 +198,7 @@ class _ListCustomerPageState extends State<ListCustomerPage> {
             actions: [
               FlatButton(
                   onPressed: () {
-                    usersRef
+                    reference
                         .child(contact['key'])
                         .remove()
                         .whenComplete(() => Navigator.pop(context));
