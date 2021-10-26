@@ -62,7 +62,7 @@ class _Edit2State extends State<Edit2> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Update customer support info'),
+        title: Text('Update customer info'),
       ),
       body: Container(
         margin: EdgeInsets.all(15),
