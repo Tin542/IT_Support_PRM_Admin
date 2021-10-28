@@ -8,7 +8,6 @@ import 'package:it_support/firebase_database/database.dart';
 import 'package:it_support/screens/auth_screen/login_screen.dart';
 import 'package:it_support/screens/profile_screen/edit_profile_screen.dart';
 
-
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({Key? key}) : super(key: key);
 
@@ -22,10 +21,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
     super.initState();
     getProfileuser();
   }
+
   final User? user = FirebaseAuth.instance.currentUser;
   String displayEmail = '';
   String displayName = '';
-
 
   Widget textfield({@required hintText, @required icon, onTap}) {
     return Material(
@@ -78,8 +77,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           shape: BoxShape.circle,
                           color: kBackgroundColor,
                           image: DecorationImage(
-                            image:
-                            AssetImage('assets/images/Yeti.png'),
+                            image: AssetImage('assets/images/Yeti.png'),
                           ),
                         ),
                       ),
@@ -92,22 +90,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                     ],
                   ),
-                  // Padding(
-                  //   padding: EdgeInsets.only(top: 120, left: 160),
-                  //   child: CircleAvatar(
-                  //     backgroundColor: Colors.black54,
-                  //     child: IconButton(
-                  //       icon: Icon(Icons.camera_alt_outlined,
-                  //           color: Colors.white, size: 25),
-                  //       onPressed: () {},
-                  //     ),
-                  //   ),
-                  // ),
                 ],
               ),
-              // SizedBox(
-              //   height: 22,
-              // ),
               Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
@@ -129,8 +113,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             children: [
                               Padding(
                                 padding:
-                                const EdgeInsets.fromLTRB(20, 0, 20, 0),
-                                child: Icon(Icons.person, color: kWhiteColor,),
+                                    const EdgeInsets.fromLTRB(20, 0, 20, 0),
+                                child: Icon(
+                                  Icons.person,
+                                  color: kWhiteColor,
+                                ),
                               ),
                               Text(
                                 "Tài khoản",
@@ -153,7 +140,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           onTap: () => {
                             Get.offAll(() => LoginScreen(),
                                 duration: Duration(microseconds: 600)),
-                          displayToastMessage("Bạn đã đăng xuất.", context),
+                            displayToastMessage("Bạn đã đăng xuất.", context),
                           },
                         ),
                       ],
@@ -181,7 +168,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
       });
     });
   }
-  displayToastMessage(String message, BuildContext context){
-    Fluttertoast.showToast(msg:message);
+
+  displayToastMessage(String message, BuildContext context) {
+    Fluttertoast.showToast(msg: message);
   }
 }
