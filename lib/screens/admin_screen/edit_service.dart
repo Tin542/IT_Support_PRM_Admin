@@ -1,16 +1,20 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 
-class AddService extends StatefulWidget {
-  AddService({Key? key}) : super(key: key);
+class EditService extends StatefulWidget {
+  String contactKey;
+
+  EditService({
+    Key? key,
+    required this.contactKey,
+  }) : super(key: key);
 
   @override
-  _AddServiceState createState() => _AddServiceState();
+  _EditServiceState createState() => _EditServiceState();
 }
 
-class _AddServiceState extends State<AddService> {
+class _EditServiceState extends State<EditService> {
   late TextEditingController _level, _servicePrice;
-  late String _typeSelected = '';
 
   late DatabaseReference _ref;
 
@@ -21,69 +25,20 @@ class _AddServiceState extends State<AddService> {
     _level = TextEditingController();
     _servicePrice = TextEditingController();
     _ref = FirebaseDatabase.instance.reference().child('prices');
-  }
-
-  Widget _basisType(String title) {
-    return InkWell(
-      child: Container(
-        height: 40,
-        width: 90,
-        decoration: BoxDecoration(
-          color: _typeSelected == title
-              ? Colors.green
-              : Theme.of(context).accentColor,
-          borderRadius: BorderRadius.circular(15),
-        ),
-        child: Center(
-          child: Text(
-            title,
-            style: TextStyle(fontSize: 18, color: Colors.white),
-          ),
-        ),
-      ),
-      onTap: () {
-        setState(() {
-          _typeSelected = title;
-        });
-      },
-    );
+    getContactDetail();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Add Level'),
+        title: Text('Edit Level'),
       ),
       body: Container(
         margin: EdgeInsets.all(15),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-              height: 40,
-              child: ListView(
-                scrollDirection: Axis.horizontal,
-                children: [
-                  _basisType('IOS'),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  _basisType('android'),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  _basisType('Windown'),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  _basisType('MacOS'),
-                ],
-              ),
-            ),
-            SizedBox(
-              height: 15,
-            ),
             TextFormField(
               controller: _level,
               decoration: InputDecoration(
@@ -121,7 +76,7 @@ class _AddServiceState extends State<AddService> {
               padding: EdgeInsets.symmetric(horizontal: 10),
               child: RaisedButton(
                 child: Text(
-                  'Add Level',
+                  'Save ',
                   style: TextStyle(
                     fontSize: 20,
                     color: Colors.white,
@@ -140,17 +95,23 @@ class _AddServiceState extends State<AddService> {
     );
   }
 
+  getContactDetail() async {
+    DataSnapshot snapshot = await _ref.child(widget.contactKey).once();
+    Map contact = snapshot.value;
+    _level.text = contact['level'];
+    _servicePrice.text = contact['price'];
+  }
+
   void saveService() {
     String level = _level.text;
     String price = _servicePrice.text;
 
     Map<String, String> service = {
       'level': level,
-      'category': _typeSelected,
       'price': price,
     };
 
-    _ref.push().set(service).then((value) {
+    _ref.child(widget.contactKey).update(service).then((value) {
       Navigator.pop(context);
     });
   }

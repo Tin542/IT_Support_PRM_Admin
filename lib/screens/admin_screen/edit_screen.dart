@@ -32,32 +32,6 @@ class _EditState extends State<Edit> {
     getContactDetail();
   }
 
-  // Widget _buildContactType(String title) {
-  //   return InkWell(
-  //     child: Container(
-  //       height: 40,
-  //       width: 90,
-  //       decoration: BoxDecoration(
-  //         color: _typeSelected == title
-  //             ? Colors.green
-  //             : Theme.of(context).accentColor,
-  //         borderRadius: BorderRadius.circular(15),
-  //       ),
-  //       child: Center(
-  //         child: Text(
-  //           title,
-  //           style: TextStyle(fontSize: 18, color: Colors.white),
-  //         ),
-  //       ),
-  //     ),
-  //     onTap: () {
-  //       setState(() {
-  //         _typeSelected = title;
-  //       });
-  //     },
-  //   );
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
