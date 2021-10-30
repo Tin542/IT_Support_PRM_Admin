@@ -45,6 +45,7 @@ class _EditServiceState extends State<EditService> {
                 hintText: 'Level',
                 prefixIcon: Icon(
                   Icons.star,
+                  color: Colors.yellow[900],
                   size: 30,
                 ),
                 fillColor: Colors.white,
@@ -61,6 +62,7 @@ class _EditServiceState extends State<EditService> {
                 hintText: 'Giá Dịch vụ',
                 prefixIcon: Icon(
                   Icons.money,
+                  color: Colors.green,
                   size: 30,
                 ),
                 fillColor: Colors.white,

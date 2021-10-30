@@ -49,6 +49,7 @@ class _Edit2State extends State<Edit2> {
                 hintText: 'Enter email',
                 prefixIcon: Icon(
                   Icons.email,
+                  color: Colors.redAccent[100],
                   size: 30,
                 ),
                 fillColor: Colors.white,
@@ -65,6 +66,7 @@ class _Edit2State extends State<Edit2> {
                 hintText: 'Enter name',
                 prefixIcon: Icon(
                   Icons.person,
+                  color: Colors.deepOrange[100],
                   size: 30,
                 ),
                 fillColor: Colors.white,
@@ -81,6 +83,7 @@ class _Edit2State extends State<Edit2> {
                 hintText: 'Enter gender',
                 prefixIcon: Icon(
                   Icons.transgender,
+                  color: Colors.purple,
                   size: 30,
                 ),
                 fillColor: Colors.white,
@@ -97,6 +100,7 @@ class _Edit2State extends State<Edit2> {
                 hintText: 'Enter phone',
                 prefixIcon: Icon(
                   Icons.phone_android,
+                  color: Colors.greenAccent[400],
                   size: 30,
                 ),
                 fillColor: Colors.white,
@@ -113,6 +117,7 @@ class _Edit2State extends State<Edit2> {
                 hintText: 'Enter dob',
                 prefixIcon: Icon(
                   Icons.date_range,
+                  color: Colors.blue[900],
                   size: 30,
                 ),
                 fillColor: Colors.white,

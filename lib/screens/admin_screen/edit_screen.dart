@@ -49,6 +49,7 @@ class _EditState extends State<Edit> {
                 hintText: 'Enter email',
                 prefixIcon: Icon(
                   Icons.email,
+                  color: Colors.redAccent[100],
                   size: 30,
                 ),
                 fillColor: Colors.white,
@@ -65,6 +66,7 @@ class _EditState extends State<Edit> {
                 hintText: 'Enter name',
                 prefixIcon: Icon(
                   Icons.person,
+                  color: Colors.deepOrange[100],
                   size: 30,
                 ),
                 fillColor: Colors.white,
@@ -81,6 +83,7 @@ class _EditState extends State<Edit> {
                 hintText: 'Enter gender',
                 prefixIcon: Icon(
                   Icons.transgender,
+                  color: Colors.purple,
                   size: 30,
                 ),
                 fillColor: Colors.white,
@@ -97,6 +100,7 @@ class _EditState extends State<Edit> {
                 hintText: 'Enter phone',
                 prefixIcon: Icon(
                   Icons.phone_android,
+                  color: Colors.greenAccent[400],
                   size: 30,
                 ),
                 fillColor: Colors.white,
@@ -113,6 +117,7 @@ class _EditState extends State<Edit> {
                 hintText: 'Enter dob',
                 prefixIcon: Icon(
                   Icons.date_range,
+                  color: Colors.blue[900],
                   size: 30,
                 ),
                 fillColor: Colors.white,

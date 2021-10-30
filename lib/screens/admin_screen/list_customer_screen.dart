@@ -50,7 +50,7 @@ class _ListCustomerPageState extends State<ListCustomerPage> {
             children: [
               Icon(
                 Icons.mail,
-                color: Theme.of(context).accentColor,
+                color: Colors.redAccent[100], //Theme.of(context).accentColor,
                 size: 20,
               ),
               SizedBox(
@@ -60,7 +60,8 @@ class _ListCustomerPageState extends State<ListCustomerPage> {
                 contact!['email'],
                 style: TextStyle(
                     fontSize: 16,
-                    color: Theme.of(context).accentColor,
+                    color:
+                        Colors.redAccent[100], //Theme.of(context).accentColor,
                     fontWeight: FontWeight.w600),
               ),
               SizedBox(
@@ -68,7 +69,7 @@ class _ListCustomerPageState extends State<ListCustomerPage> {
               ),
               Icon(
                 Icons.phone_android,
-                color: Theme.of(context).accentColor,
+                color: Colors.greenAccent[400], //Theme.of(context).accentColor,
                 size: 20,
               ),
               SizedBox(
@@ -78,7 +79,8 @@ class _ListCustomerPageState extends State<ListCustomerPage> {
                 contact['phone'],
                 style: TextStyle(
                     fontSize: 16,
-                    color: Theme.of(context).accentColor,
+                    color: Colors
+                        .greenAccent[400], //Theme.of(context).accentColor,
                     fontWeight: FontWeight.w600),
               ),
             ],
@@ -90,7 +92,7 @@ class _ListCustomerPageState extends State<ListCustomerPage> {
             children: [
               Icon(
                 Icons.person,
-                color: Theme.of(context).accentColor,
+                color: Colors.deepOrange[100], //Theme.of(context).accentColor,
                 size: 20,
               ),
               SizedBox(
@@ -100,15 +102,16 @@ class _ListCustomerPageState extends State<ListCustomerPage> {
                 contact['name'],
                 style: TextStyle(
                     fontSize: 16,
-                    color: Theme.of(context).accentColor,
+                    color:
+                        Colors.deepOrange[100], //Theme.of(context).accentColor,
                     fontWeight: FontWeight.w600),
               ),
               SizedBox(
                 width: 30,
               ),
               Icon(
-                Icons.person,
-                color: Theme.of(context).accentColor,
+                Icons.transgender,
+                color: Colors.purple, //Theme.of(context).accentColor,
                 size: 20,
               ),
               SizedBox(
@@ -118,7 +121,7 @@ class _ListCustomerPageState extends State<ListCustomerPage> {
                 contact['gender'],
                 style: TextStyle(
                     fontSize: 16,
-                    color: Theme.of(context).accentColor,
+                    color: Colors.purple, //Theme.of(context).accentColor,
                     fontWeight: FontWeight.w600),
               ),
               SizedBox(
@@ -126,7 +129,7 @@ class _ListCustomerPageState extends State<ListCustomerPage> {
               ),
               Icon(
                 Icons.date_range,
-                color: Theme.of(context).accentColor,
+                color: Colors.blue[900], //Theme.of(context).accentColor,
                 size: 20,
               ),
               SizedBox(
@@ -136,7 +139,7 @@ class _ListCustomerPageState extends State<ListCustomerPage> {
                 contact['dob'],
                 style: TextStyle(
                     fontSize: 16,
-                    color: Theme.of(context).accentColor,
+                    color: Colors.blue[900], //Theme.of(context).accentColor,
                     fontWeight: FontWeight.w600),
               ),
             ],
@@ -160,7 +163,7 @@ class _ListCustomerPageState extends State<ListCustomerPage> {
                   children: [
                     Icon(
                       Icons.edit,
-                      color: Colors.green,
+                      color: Colors.blue,
                     ),
                   ],
                 ),
@@ -218,6 +221,13 @@ class _ListCustomerPageState extends State<ListCustomerPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: NetworkImage(
+                'https://th.bing.com/th/id/R.b1bbc6999bab54a81f1d747f83f2aee9?rik=WlUY0h1dLHadUQ&riu=http%3a%2f%2fwonderfulengineering.com%2fwp-content%2fuploads%2f2014%2f01%2fTechnology-Wallpaper-1.jpg&ehk=sBXrHIpRILTdFNyET%2b7AX6zy6UYx4KkHe7uQydfqJzM%3d&risl=&pid=ImgRaw&r=0'),
+            fit: BoxFit.cover,
+          ),
+        ),
         height: double.infinity,
         child: FirebaseAnimatedList(
           query: _ref,

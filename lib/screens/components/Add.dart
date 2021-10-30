@@ -90,6 +90,7 @@ class _AddServiceState extends State<AddService> {
                 hintText: 'Level',
                 prefixIcon: Icon(
                   Icons.star,
+                  color: Colors.yellow[900],
                   size: 30,
                 ),
                 fillColor: Colors.white,
@@ -106,6 +107,7 @@ class _AddServiceState extends State<AddService> {
                 hintText: 'Giá Dịch vụ',
                 prefixIcon: Icon(
                   Icons.money,
+                  color: Colors.green,
                   size: 30,
                 ),
                 fillColor: Colors.white,
