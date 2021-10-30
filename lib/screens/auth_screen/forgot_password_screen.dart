@@ -13,13 +13,6 @@ class ForgotPasswordScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.end,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              // Padding(
-              //   padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
-              //   child: Container(
-              //       width: 380,
-              //       height: 300,
-              //       child: Image.asset('assets/images/logo.jpg')),
-              // ),
               Padding(
                 padding: const EdgeInsets.fromLTRB(0, 170, 0, 20),
                 child: Text(
