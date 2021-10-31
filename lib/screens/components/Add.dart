@@ -9,8 +9,7 @@ class AddService extends StatefulWidget {
 }
 
 class _AddServiceState extends State<AddService> {
-  late TextEditingController _level, _servicePrice;
-  late String _typeSelected = '';
+  late TextEditingController _level, _servicePrice, _des;
 
   late DatabaseReference _ref;
 
@@ -20,33 +19,8 @@ class _AddServiceState extends State<AddService> {
     super.initState();
     _level = TextEditingController();
     _servicePrice = TextEditingController();
+    _des = TextEditingController();
     _ref = FirebaseDatabase.instance.reference().child('prices');
-  }
-
-  Widget _basisType(String title) {
-    return InkWell(
-      child: Container(
-        height: 40,
-        width: 90,
-        decoration: BoxDecoration(
-          color: _typeSelected == title
-              ? Colors.green
-              : Theme.of(context).accentColor,
-          borderRadius: BorderRadius.circular(15),
-        ),
-        child: Center(
-          child: Text(
-            title,
-            style: TextStyle(fontSize: 18, color: Colors.white),
-          ),
-        ),
-      ),
-      onTap: () {
-        setState(() {
-          _typeSelected = title;
-        });
-      },
-    );
   }
 
   @override
@@ -60,30 +34,6 @@ class _AddServiceState extends State<AddService> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-              height: 40,
-              child: ListView(
-                scrollDirection: Axis.horizontal,
-                children: [
-                  _basisType('IOS'),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  _basisType('android'),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  _basisType('Windown'),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  _basisType('MacOS'),
-                ],
-              ),
-            ),
-            SizedBox(
-              height: 15,
-            ),
             TextFormField(
               controller: _level,
               decoration: InputDecoration(
@@ -91,6 +41,23 @@ class _AddServiceState extends State<AddService> {
                 prefixIcon: Icon(
                   Icons.star,
                   color: Colors.yellow[900],
+                  size: 30,
+                ),
+                fillColor: Colors.white,
+                filled: true,
+                contentPadding: EdgeInsets.all(15),
+              ),
+            ),
+            SizedBox(
+              height: 15,
+            ),
+            TextFormField(
+              controller: _des,
+              decoration: InputDecoration(
+                hintText: 'Mô tả',
+                prefixIcon: Icon(
+                  Icons.description,
+                  color: Colors.blue,
                   size: 30,
                 ),
                 fillColor: Colors.white,
@@ -145,10 +112,11 @@ class _AddServiceState extends State<AddService> {
   void saveService() {
     String level = _level.text;
     String price = _servicePrice.text;
+    String des = _des.text;
 
     Map<String, String> service = {
+      'des': des,
       'level': level,
-      'category': _typeSelected,
       'price': price,
     };
 
