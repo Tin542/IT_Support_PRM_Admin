@@ -14,7 +14,7 @@ class EditService extends StatefulWidget {
 }
 
 class _EditServiceState extends State<EditService> {
-  late TextEditingController _level, _servicePrice;
+  late TextEditingController _level, _servicePrice, _des;
 
   late DatabaseReference _ref;
 
@@ -24,6 +24,7 @@ class _EditServiceState extends State<EditService> {
     super.initState();
     _level = TextEditingController();
     _servicePrice = TextEditingController();
+    _des = TextEditingController();
     _ref = FirebaseDatabase.instance.reference().child('prices');
     getContactDetail();
   }
@@ -46,6 +47,23 @@ class _EditServiceState extends State<EditService> {
                 prefixIcon: Icon(
                   Icons.star,
                   color: Colors.yellow[900],
+                  size: 30,
+                ),
+                fillColor: Colors.white,
+                filled: true,
+                contentPadding: EdgeInsets.all(15),
+              ),
+            ),
+            SizedBox(
+              height: 15,
+            ),
+            TextFormField(
+              controller: _des,
+              decoration: InputDecoration(
+                hintText: 'Mô tả',
+                prefixIcon: Icon(
+                  Icons.description,
+                  color: Colors.blue,
                   size: 30,
                 ),
                 fillColor: Colors.white,
@@ -101,14 +119,17 @@ class _EditServiceState extends State<EditService> {
     DataSnapshot snapshot = await _ref.child(widget.contactKey).once();
     Map contact = snapshot.value;
     _level.text = contact['level'];
+    _des.text = contact['des'];
     _servicePrice.text = contact['price'];
   }
 
   void saveService() {
     String level = _level.text;
     String price = _servicePrice.text;
+    String des = _des.text;
 
     Map<String, String> service = {
+      'des': des,
       'level': level,
       'price': price,
     };

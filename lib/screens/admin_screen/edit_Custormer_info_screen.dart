@@ -16,7 +16,6 @@ class Edit2 extends StatefulWidget {
 
 class _Edit2State extends State<Edit2> {
   late TextEditingController _dob, _email, _name, _gender, _phone;
-  // String _typeSelected = '';
 
   late DatabaseReference _ref;
 

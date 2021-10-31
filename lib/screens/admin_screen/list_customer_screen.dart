@@ -40,7 +40,7 @@ class _ListCustomerPageState extends State<ListCustomerPage> {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 10),
       padding: EdgeInsets.all(10),
-      height: 100,
+      height: 130,
       color: Colors.white,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -50,7 +50,7 @@ class _ListCustomerPageState extends State<ListCustomerPage> {
             children: [
               Icon(
                 Icons.mail,
-                color: Colors.redAccent[100], //Theme.of(context).accentColor,
+                color: Colors.redAccent[100],
                 size: 20,
               ),
               SizedBox(
@@ -60,8 +60,7 @@ class _ListCustomerPageState extends State<ListCustomerPage> {
                 contact!['email'],
                 style: TextStyle(
                     fontSize: 16,
-                    color:
-                        Colors.redAccent[100], //Theme.of(context).accentColor,
+                    color: Colors.redAccent[100],
                     fontWeight: FontWeight.w600),
               ),
               SizedBox(
@@ -69,7 +68,7 @@ class _ListCustomerPageState extends State<ListCustomerPage> {
               ),
               Icon(
                 Icons.phone_android,
-                color: Colors.greenAccent[400], //Theme.of(context).accentColor,
+                color: Colors.greenAccent[400],
                 size: 20,
               ),
               SizedBox(
@@ -79,8 +78,7 @@ class _ListCustomerPageState extends State<ListCustomerPage> {
                 contact['phone'],
                 style: TextStyle(
                     fontSize: 16,
-                    color: Colors
-                        .greenAccent[400], //Theme.of(context).accentColor,
+                    color: Colors.greenAccent[400],
                     fontWeight: FontWeight.w600),
               ),
             ],
@@ -92,7 +90,7 @@ class _ListCustomerPageState extends State<ListCustomerPage> {
             children: [
               Icon(
                 Icons.person,
-                color: Colors.deepOrange[100], //Theme.of(context).accentColor,
+                color: Colors.deepOrange[100],
                 size: 20,
               ),
               SizedBox(
@@ -102,8 +100,7 @@ class _ListCustomerPageState extends State<ListCustomerPage> {
                 contact['name'],
                 style: TextStyle(
                     fontSize: 16,
-                    color:
-                        Colors.deepOrange[100], //Theme.of(context).accentColor,
+                    color: Colors.deepOrange[100],
                     fontWeight: FontWeight.w600),
               ),
               SizedBox(
@@ -111,7 +108,7 @@ class _ListCustomerPageState extends State<ListCustomerPage> {
               ),
               Icon(
                 Icons.transgender,
-                color: Colors.purple, //Theme.of(context).accentColor,
+                color: Colors.purple,
                 size: 20,
               ),
               SizedBox(
@@ -121,7 +118,7 @@ class _ListCustomerPageState extends State<ListCustomerPage> {
                 contact['gender'],
                 style: TextStyle(
                     fontSize: 16,
-                    color: Colors.purple, //Theme.of(context).accentColor,
+                    color: Colors.purple,
                     fontWeight: FontWeight.w600),
               ),
               SizedBox(
@@ -129,7 +126,7 @@ class _ListCustomerPageState extends State<ListCustomerPage> {
               ),
               Icon(
                 Icons.date_range,
-                color: Colors.blue[900], //Theme.of(context).accentColor,
+                color: Colors.blue[900],
                 size: 20,
               ),
               SizedBox(
@@ -139,19 +136,18 @@ class _ListCustomerPageState extends State<ListCustomerPage> {
                 contact['dob'],
                 style: TextStyle(
                     fontSize: 16,
-                    color: Colors.blue[900], //Theme.of(context).accentColor,
+                    color: Colors.blue[900],
                     fontWeight: FontWeight.w600),
               ),
             ],
           ),
           SizedBox(
-            height: 5,
+            height: 15,
           ),
           Row(
             children: [
               GestureDetector(
                 onTap: () {
-                  // _showDeleteDialog(contact: contact);
                   Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -164,6 +160,14 @@ class _ListCustomerPageState extends State<ListCustomerPage> {
                     Icon(
                       Icons.edit,
                       color: Colors.blue,
+                    ),
+                    SizedBox(width: 6),
+                    Text(
+                      'Edit',
+                      style: TextStyle(
+                          fontSize: 16,
+                          color: Colors.blue,
+                          fontWeight: FontWeight.w600),
                     ),
                   ],
                 ),
@@ -180,6 +184,14 @@ class _ListCustomerPageState extends State<ListCustomerPage> {
                     Icon(
                       Icons.delete,
                       color: Colors.red[700],
+                    ),
+                    SizedBox(width: 6),
+                    Text(
+                      'Delete',
+                      style: TextStyle(
+                          fontSize: 16,
+                          color: Colors.red[700],
+                          fontWeight: FontWeight.w600),
                     ),
                   ],
                 ),
@@ -221,13 +233,6 @@ class _ListCustomerPageState extends State<ListCustomerPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: NetworkImage(
-                'https://th.bing.com/th/id/R.b1bbc6999bab54a81f1d747f83f2aee9?rik=WlUY0h1dLHadUQ&riu=http%3a%2f%2fwonderfulengineering.com%2fwp-content%2fuploads%2f2014%2f01%2fTechnology-Wallpaper-1.jpg&ehk=sBXrHIpRILTdFNyET%2b7AX6zy6UYx4KkHe7uQydfqJzM%3d&risl=&pid=ImgRaw&r=0'),
-            fit: BoxFit.cover,
-          ),
-        ),
         height: double.infinity,
         child: FirebaseAnimatedList(
           query: _ref,

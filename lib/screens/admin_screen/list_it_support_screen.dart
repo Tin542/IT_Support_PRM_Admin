@@ -3,6 +3,7 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:it_support/screens/components/Add_IT_support.dart';
 
 import 'edit_screen.dart';
 
@@ -36,6 +37,13 @@ class _ListITPageState extends State<ListITPage> {
   late final users = FirebaseDatabase.instance.reference();
   late DatabaseReference databaseReference;
 
+  bool isSort1 = false;
+
+  void sort1(Map? contact) {
+    contact!['name'].sort((a, b) => isSort1 ? a.compareTo(b) : b.compareTo(a));
+    isSort1 = !isSort1;
+  }
+
   @override
   Widget _buildContactItem({Map? contact}) {
     return Container(
@@ -51,7 +59,7 @@ class _ListITPageState extends State<ListITPage> {
             children: [
               Icon(
                 Icons.mail,
-                color: Colors.redAccent[100], //Theme.of(context).accentColor,
+                color: Colors.redAccent[100],
                 size: 20,
               ),
               SizedBox(
@@ -61,8 +69,7 @@ class _ListITPageState extends State<ListITPage> {
                 contact!['email'],
                 style: TextStyle(
                     fontSize: 16,
-                    color:
-                        Colors.redAccent[100], //Theme.of(context).accentColor,
+                    color: Colors.redAccent[100],
                     fontWeight: FontWeight.w600),
               ),
               SizedBox(
@@ -70,7 +77,7 @@ class _ListITPageState extends State<ListITPage> {
               ),
               Icon(
                 Icons.phone_android,
-                color: Colors.greenAccent[400], //Theme.of(context).accentColor,
+                color: Colors.greenAccent[400],
                 size: 20,
               ),
               SizedBox(
@@ -80,20 +87,19 @@ class _ListITPageState extends State<ListITPage> {
                 contact['phone'],
                 style: TextStyle(
                     fontSize: 16,
-                    color: Colors
-                        .greenAccent[400], //Theme.of(context).accentColor,
+                    color: Colors.greenAccent[400],
                     fontWeight: FontWeight.w600),
               ),
             ],
           ),
           SizedBox(
-            height: 10,
+            height: 15,
           ),
           Row(
             children: [
               Icon(
                 Icons.person,
-                color: Colors.deepOrange[100], //Theme.of(context).accentColor,
+                color: Colors.deepOrange[100],
                 size: 20,
               ),
               SizedBox(
@@ -103,8 +109,7 @@ class _ListITPageState extends State<ListITPage> {
                 contact['name'],
                 style: TextStyle(
                     fontSize: 16,
-                    color:
-                        Colors.deepOrange[100], //Theme.of(context).accentColor,
+                    color: Colors.deepOrange[100],
                     fontWeight: FontWeight.w600),
               ),
               SizedBox(
@@ -112,7 +117,7 @@ class _ListITPageState extends State<ListITPage> {
               ),
               Icon(
                 Icons.transgender,
-                color: Colors.purple, //Theme.of(context).accentColor,
+                color: Colors.purple,
                 size: 20,
               ),
               SizedBox(
@@ -122,7 +127,7 @@ class _ListITPageState extends State<ListITPage> {
                 contact['gender'],
                 style: TextStyle(
                     fontSize: 16,
-                    color: Colors.purple, //Theme.of(context).accentColor,
+                    color: Colors.purple,
                     fontWeight: FontWeight.w600),
               ),
               SizedBox(
@@ -130,7 +135,7 @@ class _ListITPageState extends State<ListITPage> {
               ),
               Icon(
                 Icons.date_range,
-                color: Colors.blue[900], //Theme.of(context).accentColor,
+                color: Colors.blue[900],
                 size: 20,
               ),
               SizedBox(
@@ -140,7 +145,7 @@ class _ListITPageState extends State<ListITPage> {
                 contact['dob'],
                 style: TextStyle(
                     fontSize: 16,
-                    color: Colors.blue[900], //Theme.of(context).accentColor,
+                    color: Colors.blue[900],
                     fontWeight: FontWeight.w600),
               ),
             ],
@@ -152,7 +157,6 @@ class _ListITPageState extends State<ListITPage> {
             children: [
               GestureDetector(
                 onTap: () {
-                  // _showDeleteDialog(contact: contact);
                   Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -165,6 +169,14 @@ class _ListITPageState extends State<ListITPage> {
                     Icon(
                       Icons.edit,
                       color: Colors.blue,
+                    ),
+                    SizedBox(width: 6),
+                    Text(
+                      'Edit',
+                      style: TextStyle(
+                          fontSize: 16,
+                          color: Colors.blue,
+                          fontWeight: FontWeight.w600),
                     ),
                   ],
                 ),
@@ -181,6 +193,14 @@ class _ListITPageState extends State<ListITPage> {
                     Icon(
                       Icons.delete,
                       color: Colors.red[700],
+                    ),
+                    SizedBox(width: 6),
+                    Text(
+                      'Delete',
+                      style: TextStyle(
+                          fontSize: 16,
+                          color: Colors.red[700],
+                          fontWeight: FontWeight.w600),
                     ),
                   ],
                 ),
@@ -222,13 +242,6 @@ class _ListITPageState extends State<ListITPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: NetworkImage(
-                'https://th.bing.com/th/id/R.b1bbc6999bab54a81f1d747f83f2aee9?rik=WlUY0h1dLHadUQ&riu=http%3a%2f%2fwonderfulengineering.com%2fwp-content%2fuploads%2f2014%2f01%2fTechnology-Wallpaper-1.jpg&ehk=sBXrHIpRILTdFNyET%2b7AX6zy6UYx4KkHe7uQydfqJzM%3d&risl=&pid=ImgRaw&r=0'),
-            fit: BoxFit.cover,
-          ),
-        ),
         height: double.infinity,
         child: FirebaseAnimatedList(
           query: _ref,
@@ -238,6 +251,17 @@ class _ListITPageState extends State<ListITPage> {
             contact['key'] = snapshot.key;
             return _buildContactItem(contact: contact);
           },
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(context, MaterialPageRoute(builder: (_) {
+            return AddIT();
+          }));
+        },
+        child: Icon(
+          Icons.add,
+          color: Colors.white,
         ),
       ),
     );
