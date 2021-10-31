@@ -39,7 +39,7 @@ class _ListCustomerPageState extends State<ListCustomerPage> {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 10),
       padding: EdgeInsets.all(10),
-      height: 130,
+      height: 170,
       color: Colors.white,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -62,9 +62,13 @@ class _ListCustomerPageState extends State<ListCustomerPage> {
                     color: Colors.redAccent[100],
                     fontWeight: FontWeight.w600),
               ),
-              SizedBox(
-                width: 30,
-              ),
+            ],
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Row(
+            children: [
               Icon(
                 Icons.phone_android,
                 color: Colors.greenAccent[400],
@@ -120,12 +124,16 @@ class _ListCustomerPageState extends State<ListCustomerPage> {
                     color: Colors.purple,
                     fontWeight: FontWeight.w600),
               ),
-              SizedBox(
-                width: 30,
-              ),
+            ],
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Row(
+            children: [
               Icon(
                 Icons.date_range,
-                color: Colors.blue[900],
+                color: Colors.blue[700],
                 size: 20,
               ),
               SizedBox(
@@ -135,13 +143,13 @@ class _ListCustomerPageState extends State<ListCustomerPage> {
                 contact['dob'],
                 style: TextStyle(
                     fontSize: 16,
-                    color: Colors.blue[900],
+                    color: Colors.blue[700],
                     fontWeight: FontWeight.w600),
               ),
             ],
           ),
           SizedBox(
-            height: 15,
+            height: 10,
           ),
           Row(
             children: [

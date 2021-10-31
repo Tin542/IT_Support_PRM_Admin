@@ -35,19 +35,12 @@ class _ListITPageState extends State<ListITPage> {
   late final users = FirebaseDatabase.instance.reference();
   late DatabaseReference databaseReference;
 
-  bool isSort1 = false;
-
-  void sort1(Map? contact) {
-    contact!['name'].sort((a, b) => isSort1 ? a.compareTo(b) : b.compareTo(a));
-    isSort1 = !isSort1;
-  }
-
   @override
   Widget _buildContactItem({Map? contact}) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 10),
       padding: EdgeInsets.all(10),
-      height: 130,
+      height: 170,
       color: Colors.white,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -70,9 +63,13 @@ class _ListITPageState extends State<ListITPage> {
                     color: Colors.redAccent[100],
                     fontWeight: FontWeight.w600),
               ),
-              SizedBox(
-                width: 30,
-              ),
+            ],
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Row(
+            children: [
               Icon(
                 Icons.phone_android,
                 color: Colors.greenAccent[400],
@@ -91,7 +88,7 @@ class _ListITPageState extends State<ListITPage> {
             ],
           ),
           SizedBox(
-            height: 15,
+            height: 10,
           ),
           Row(
             children: [
@@ -128,12 +125,16 @@ class _ListITPageState extends State<ListITPage> {
                     color: Colors.purple,
                     fontWeight: FontWeight.w600),
               ),
-              SizedBox(
-                width: 30,
-              ),
+            ],
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Row(
+            children: [
               Icon(
                 Icons.date_range,
-                color: Colors.blue[900],
+                color: Colors.blue[700],
                 size: 20,
               ),
               SizedBox(
@@ -143,13 +144,13 @@ class _ListITPageState extends State<ListITPage> {
                 contact['dob'],
                 style: TextStyle(
                     fontSize: 16,
-                    color: Colors.blue[900],
+                    color: Colors.blue[700],
                     fontWeight: FontWeight.w600),
               ),
             ],
           ),
           SizedBox(
-            height: 15,
+            height: 10,
           ),
           Row(
             children: [
