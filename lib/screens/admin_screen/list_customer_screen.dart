@@ -3,7 +3,6 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:it_support/screens/admin_screen/edit_Custormer_info_screen.dart';
 
 class ListCustomerPage extends StatefulWidget {
   ListCustomerPage({Key? key}) : super(key: key);
@@ -146,35 +145,6 @@ class _ListCustomerPageState extends State<ListCustomerPage> {
           ),
           Row(
             children: [
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (_) => Edit2(
-                                contactKey: contact['key'],
-                              )));
-                },
-                child: Row(
-                  children: [
-                    Icon(
-                      Icons.edit,
-                      color: Colors.blue,
-                    ),
-                    SizedBox(width: 6),
-                    Text(
-                      'Edit',
-                      style: TextStyle(
-                          fontSize: 16,
-                          color: Colors.blue,
-                          fontWeight: FontWeight.w600),
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(
-                width: 20,
-              ),
               GestureDetector(
                 onTap: () {
                   _showDeleteDialog(contact: contact);
