@@ -52,7 +52,7 @@ class _RegisterScreenITState extends State<RegisterScreenIT> {
                   decoration: InputDecoration(
                       labelText: "HỌ VÀ TÊN",
                       labelStyle:
-                      TextStyle(color: Color(0xff888888), fontSize: 15)),
+                          TextStyle(color: Color(0xff888888), fontSize: 15)),
                 ),
               ),
               Padding(
@@ -96,7 +96,7 @@ class _RegisterScreenITState extends State<RegisterScreenIT> {
                     decoration: InputDecoration(
                         labelText: "SỐ ĐIỆN THOẠI",
                         labelStyle:
-                        TextStyle(color: Color(0xff888888), fontSize: 15)),
+                            TextStyle(color: Color(0xff888888), fontSize: 15)),
                     keyboardType: TextInputType.phone),
               ),
               Padding(
@@ -107,7 +107,7 @@ class _RegisterScreenITState extends State<RegisterScreenIT> {
                   decoration: InputDecoration(
                       labelText: "EMAIL",
                       labelStyle:
-                      TextStyle(color: Color(0xff888888), fontSize: 15)),
+                          TextStyle(color: Color(0xff888888), fontSize: 15)),
                 ),
               ),
               Padding(
@@ -119,7 +119,7 @@ class _RegisterScreenITState extends State<RegisterScreenIT> {
                   decoration: InputDecoration(
                       labelText: "MẬT KHẨU",
                       labelStyle:
-                      TextStyle(color: Color(0xff888888), fontSize: 15)),
+                          TextStyle(color: Color(0xff888888), fontSize: 15)),
                 ),
               ),
               Padding(
@@ -129,7 +129,7 @@ class _RegisterScreenITState extends State<RegisterScreenIT> {
                   children: [
                     Text("NGÀY SINH",
                         style:
-                        TextStyle(color: Color(0xff888888), fontSize: 15)),
+                            TextStyle(color: Color(0xff888888), fontSize: 15)),
                   ],
                 ),
               ),
@@ -262,10 +262,10 @@ class _RegisterScreenITState extends State<RegisterScreenIT> {
       FirebaseAuth.instance; // authen vao firebase
   void registerNewUser(BuildContext context) async {
     final User? firebaseUser = (await _firebaseAuth
-        .createUserWithEmailAndPassword(
-        email: emailTextEditingController.text,
-        password: passwordTextEditingController.text)
-        .catchError((errMsg) {
+            .createUserWithEmailAndPassword(
+                email: emailTextEditingController.text,
+                password: passwordTextEditingController.text)
+            .catchError((errMsg) {
       displayToastMessage("Error: " + errMsg.toString(), context);
     }))
         .user;
@@ -281,7 +281,7 @@ class _RegisterScreenITState extends State<RegisterScreenIT> {
       };
 
       itspRef.child(firebaseUser.uid).set(userDataMap);
-      displayToastMessage("Tài khoản của bạn đã được tạo", context);
+      displayToastMessage("Tài khoản đã được tạo", context);
 
       Navigator.push(
           context, MaterialPageRoute(builder: (context) => BottomNavBar()));
