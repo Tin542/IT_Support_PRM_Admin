@@ -149,7 +149,7 @@ class _RegisterScreenITState extends State<RegisterScreenIT> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         AnimatedTextFormField(
-                          width: 250,
+                          width: 235,
                           height: 48.0,
                           inputType: TextInputType.text,
                           hintText: "Thêm ngày sinh của bạn",

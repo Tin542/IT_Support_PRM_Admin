@@ -39,7 +39,7 @@ class _ListCustomerPageState extends State<ListCustomerPage> {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 10),
       padding: EdgeInsets.all(10),
-      height: 170,
+      height: 200,
       color: Colors.white,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,

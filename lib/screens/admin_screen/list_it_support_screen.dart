@@ -40,7 +40,7 @@ class _ListITPageState extends State<ListITPage> {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 10),
       padding: EdgeInsets.all(10),
-      height: 170,
+      height: 200,
       color: Colors.white,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
