@@ -96,7 +96,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Container(
-                    height: 500,
+                    height: 250,
                     width: double.infinity,
                     margin: EdgeInsets.symmetric(horizontal: 10),
                     child: Column(

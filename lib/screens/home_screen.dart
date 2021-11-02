@@ -23,7 +23,7 @@ class _HomeScreenCustomerState extends State<HomeScreenCustomer> {
           title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text('List Custormer'),
+              Text('Danh sách khách hàng'),
             ],
           ),
         ),
